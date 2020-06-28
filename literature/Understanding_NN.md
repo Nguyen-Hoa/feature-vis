@@ -3,12 +3,13 @@
 This paper highlights its two main contributions: a tool to visualize neuron activation values in real time and regularization methods for more interpretable images.
 
 The objective function used to obtain an image representing neuron activation is:
+
 $$x^{*} = \arg\max_x (a_{i}(x) - R_{\theta}(x))$$ (1)
 
-Where $a_{i}(x)$ is the activation for unit $i$ with input $x$, and $R_{\theta}(x)$ is a regularization term. The paper uses gradient ascent to solve for $x^*$ with step directions defined by:
+Where $$a_{i}(x)$$ is the activation for unit $$i$$ with input $$x$, and $$R_{\theta}(x)$$ is a regularization term. The paper uses gradient ascent to solve for $$x^*$$ with step directions defined by:
 $$x_{k+1} = r_{\theta}(x_{k} + \eta\frac{\partial a_{i}}{\partial x})$$ (2)
 
-Where $\eta$ is the step size and $r_{\theta}()$ is an operator that maps $x$ to a slightly regularized version of itself.
+Where $$\eta$$ is the step size and $$r_{\theta}()$$ is an operator that maps $$x$$ to a slightly regularized version of itself.
 
 ## Regularization
 
@@ -22,6 +23,7 @@ Based on the intuition that extreme single pixel values are not natural and do n
 ### Gaussian Blur
 
 $$r_{\theta} = GaussianBlur(x, {\theta}_{width})$$
+
 A result of using gradient ascent (activation maximization?) is that results can have [high frequency](/topics/computer_vision.md) information. By applying a Gaussian filter, the high frequency is penalized, however this method can be costly, so the authors propose applying the filter in intervals and using smaller filters (multiple small width filters have the same effect as one large width filter).
 
 ### Clipping Pixels with Small Norm
@@ -34,7 +36,8 @@ x_{ij} = \left\{
         \end{array}
     \right.
 $$
-After applying the previous two filters, which suppress high frequency and high amplitude, there will remain some unoptimized (non-zero) pixel values, a result of a non-zero gradient. This leads to an undesired shift in the output pattern. To show only the main object, and let regions not needed be zero, a bias term is added, implemented through a thresholding function that sets any pixel with a small norm to zero. The threshold value ${\theta}_{n\_pct}$ is specified as a percentile of all pixel norms in x.
+
+After applying the previous two filters, which suppress high frequency and high amplitude, there will remain some unoptimized (non-zero) pixel values, a result of a non-zero gradient. This leads to an undesired shift in the output pattern. To show only the main object, and let regions not needed be zero, a bias term is added, implemented through a thresholding function that sets any pixel with a small norm to zero. The threshold value $${\theta}_{n\_pct}$$ is specified as a percentile of all pixel norms in x.
 
 ### Clipping Pixels with Small contributions
 
@@ -46,7 +49,7 @@ x_{ij} = \left\{
         \end{array}
     \right.
 $$
-Similar to the previous approach, but instead of the norm, the contribution of the pixel is considered. The contribution is measured by taking the absolute value of the difference between the activations for input $x$ and $x_{\_j}$, where $x_{\_j}$ is $x$ with the $j^{th}$ pixel set to zero. So a pixel with high contribution will result in a larger absolute value. Pixel contributions less than the threshold ${\theta}_{c\_pct}$ will be clipped (set to zero). Computing the activations in this method require many forward passes (one for each pixel), so the authors propose an approximation by linearlizing $a_{i}(x)$ around $x$ (taylor approximation?) and then estimating the contribution by an element-wise product of $x$ and the gradient.
+Similar to the previous approach, but instead of the norm, the contribution of the pixel is considered. The contribution is measured by taking the absolute value of the difference between the activations for input $$x$$ and $$x_{\_j}$, where $$x_{\_j}$$ is $$x$$ with the $$j^{th}$$ pixel set to zero. So a pixel with high contribution will result in a larger absolute value. Pixel contributions less than the threshold $${\theta}_{c\_pct}$$ will be clipped (set to zero). Computing the activations in this method require many forward passes (one for each pixel), so the authors propose an approximation by linearlizing $$a_{i}(x)$$ around $$x$$ (taylor approximation?) and then estimating the contribution by an element-wise product of $$x$$ and the gradient.
 $$
 x_{ij} = \left\{
         \begin{array}{ll}
@@ -55,5 +58,4 @@ x_{ij} = \left\{
         \end{array}
     \right.
 $$
-$\nabla_{x}a_{i}(x)$ represents how much each pixel affects the activation, which is similar to comparing the activation between different input values.
-
+$\nabla_{x}a_{i}(x)$$ represents how much each pixel affects the activation, which is similar to comparing the activation between different input values.
