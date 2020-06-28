@@ -36,7 +36,7 @@ x_{ij} = \left\{
 $$
 After applying the previous two filters, which suppress high frequency and high amplitude, there will remain some unoptimized (non-zero) pixel values, a result of a non-zero gradient. This leads to an undesired shift in the output pattern. To show only the main object, and let regions not needed be zero, a bias term is added, implemented through a thresholding function that sets any pixel with a small norm to zero. The threshold value ${\theta}_{n\_pct}$ is specified as a percentile of all pixel norms in x.
 
-### Clipping Pixels with Small contributions
+### Clipping Pixels with Small Contributions
 
 $$
 x_{ij} = \left\{
