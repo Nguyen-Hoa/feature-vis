@@ -10,7 +10,7 @@ Where $$a_{i}(x)$$ is the activation for unit $$i$$ with input $$x$$, and $$R_{\
 
 $$x_{k+1} = r_{\theta}(x_{k} + \eta\frac{\partial a_{i}}{\partial x})$$
 
-Where $$\eta$$ is the step size and $$r_{\theta}()$$ is an operator that maps $$x$$ to a slightly regularized version of itself.
+Where $$\eta$$ is the step size and $$r_{\theta}(\cdot)$$ is an operator that maps $$x$$ to a slightly regularized version of itself.
 
 Since $$x \in \mathbb{R}^{H x W x C}$$ and we know the neural network is differentiable with respect to the input, solving the objective function is a matter of obtaining the output of specific neurons in a neural network. The challenge lies in obtaining useful results, which involves finding a way to make them more user friendly.
 
