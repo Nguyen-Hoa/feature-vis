@@ -12,9 +12,11 @@ $$x_{k+1} = r_{\theta}(x_{k} + \eta\frac{\partial a_{i}}{\partial x})$$
 
 Where $$\eta$$ is the step size and $$r_{\theta}()$$ is an operator that maps $$x$$ to a slightly regularized version of itself.
 
+Since $$x \in \reals^{H x W x C}$$ and we know the neural network is differentiable with respect to the input, solving the objective function is a matter of obtaining the output of specific neurons in a neural network. The challenge lies in obtaining useful results, which involves finding a way to make them more user friendly.
+
 ## Regularization
 
-Regularization is defined as the process of adding information in order to solve an ill-posed problem or to prevent overfitting. In the context of neuron visualization, where images are often too noisy for visual interpretation, the addition of a regularizing term leads to a more interpretable image. The follow is a list of regularizers the authors found, when used in combination, to yield exceptional results.
+Regularization is defined as the process of adding information in order to solve an ill-posed problem or to prevent overfitting. In the context of neuron visualization, where images are often too noisy for visual interpretation, the addition of a regularizing term leads to a more interpretable image. The follow is a list of regularizers the authors found, that when used in combination yields exceptional results.
 
 ### L2 Decay
 
