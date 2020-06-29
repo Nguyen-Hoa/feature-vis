@@ -2,5 +2,5 @@
 
 Organizing ideas related to understanding neural networks through feature visualization.
 
-- See [Literature](literature/) for a list of readings toward understanding feature visualization.
-- [Topics](topics/) contains resources for understanding subjects like optimizations and calculus.
+- [Literature](literature/literature.md) for a list of readings toward understanding feature visualization.
+- [Topics](topics/topics.md) contains resources for understanding subjects like optimizations and calculus.
