@@ -4,11 +4,11 @@ This paper highlights its two main contributions: a tool to visualize neuron act
 
 The objective function used to obtain an image representing neuron activation is:
 
-$x^{*} = \arg\max_x (a_{i}(x) - R_{\theta}(x))$ (1)
+$x^{*} = \arg\max_x (a_{i}(x) - R_{\theta}(x))$
 
 Where $a_{i}(x)$ is the activation for unit $i$ with input $x$, and $R_{\theta}(x)$ is a regularization term. The paper uses gradient ascent to solve for $x^*$ with step directions defined by:
 
-$x_{k+1} = r_{\theta}(x_{k} + \eta\frac{\partial a_{i}}{\partial x})$ (2)
+$x_{k+1} = r_{\theta}(x_{k} + \eta\frac{\partial a_{i}}{\partial x})$
 
 Where $\eta$ is the step size and $r_{\theta}()$ is an operator that maps $x$ to a slightly regularized version of itself.
 
