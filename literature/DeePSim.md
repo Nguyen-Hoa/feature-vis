@@ -14,6 +14,6 @@ $$\mathcal{L} =
 \lambda_{img}\mathcal{L}_{img}
 $$
 
-### Loss in Feature Space
+## Loss in Feature Space
 
 $$\mathcal{L}_{feat} = \sum_{i}||C(G_{\theta}(x_{i})) - C(y_{i})||^{2}_{2}$$
