@@ -12,7 +12,7 @@ Here $$f_{network}$$ takes $$x$$ as input, and applies the compsition of $$n$$ f
 
 $$ x^{*} = \arg\max_{x} h_{ij}(\theta,x), \quad x \quad s.t. ||x|| = \rho$$
 
-Here we have $$h_{ij}$$, a function of parameters $$\theta$$ and input $$x$$, representing the activation of neuron $$i$$ at layer $$j$$.Assuming $$\theta$$ is fixed, we can solve this non-convex optimization problem via gradient ascent, with a step defined by:
+Here we have $$h_{ij}$$, a function of parameters $$\theta$$ and input $$x$$, representing the activation of neuron $$i$$ at layer $$j$$. Assuming $$\theta$$ is fixed, we can solve this non-convex optimization problem via gradient ascent, with a step defined by:
 
 $$ x_{k+1} = x_k + \epsilon\nabla_{x}h_{ij}(x)$$
 
