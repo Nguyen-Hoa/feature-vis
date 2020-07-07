@@ -18,8 +18,14 @@ $$\mathcal{L}(cu) = c\mathcal{L}(u)$$
 
 for all functions $$u,v$$ and constants $$c$$ .
 
-$$\mathcal{L}$$ is a homogenous operator of $$\mathcal{L}u=0$$
+$$\mathcal{L}$$ is a homogenous operator if
 
-$$\mathcal{L}$$ is an inhomogenous operator if $$\mathcal{L} u = g, \quad g\neq 0$$, and $$g$$ is a function of the independent variables.
+$$\mathcal{L}u=0$$
+
+$$\mathcal{L}$$ is an inhomogenous operator if
+
+$$\mathcal{L} u = g, \quad g\neq 0$$,
+
+and $$g$$ is a function of the independent variables.
 
 e.g. $$(\cos xy^{2})u_x + y^{2}u_y = \tan(x^{2}+y^{2})$$
