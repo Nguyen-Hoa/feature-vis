@@ -72,3 +72,13 @@ catch (out_of_range){
 * *assertions* check values at compile time, and can be used on anything expressed with *constant expressions*
 
 ---
+
+## Range ```for``` statement
+
+A cleaner way too loop over a sequence.
+
+```c++
+vector<int> v{1,2,3,4};
+
+for (int sum{0}; auto x : v) sum += x;
+```
