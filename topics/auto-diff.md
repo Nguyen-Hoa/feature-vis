@@ -18,24 +18,26 @@ $$\phi(\alpha(\beta))$$
 
 Then the derivative of $$\phi$$ with respect to $$\beta$$ is defined by
 
-$$\frac{\partial\phi(\alpha(\beta))}{\partial(\beta)}=\frac{\partial\phi}{\partial\alpha}\frac{\partial\alpha}{\partial\beta}=\phi'(\alpha)\alpha'(\beta)$$
+$$\frac{\partial\phi(\alpha(\beta))}{\partial(\beta)}=\frac{\partial\phi}{\partial\alpha}\frac{\partial\alpha}{\partial\beta}=\alpha'(\beta)\phi'(\alpha)$$
 
 ### Multivariate, Scalar output
 
-Let $$f:\mathbb{R}^n\rightarrow\mathbb{R}$$ be a real valued function of $$n$$ independent variables, $$x=(x_1,x_2,\ldots,x_n)^{T}$$
+Let $$f:\mathbb{R}^n\rightarrow\mathbb{R}$$ be a real valued function of $$n$$ independent variables, $$x=(x_1,x_2,\ldots,x_n)^{T}$$.
 
 $$f$$ is differentiable at $$x$$ if there exists a vector $$g\in\mathbb{R}^n$$ such that
 
 $$\lim_{y \rightarrow 0}\frac{f(x+y)-f(x)-g^{T}y}{||y||}=0$$
 
+Where $$f(x+y)-f(x)$$ is equivalent to taking a step in the direction $$y$$, and subtacting the change in $$f$$ in direction $$y$$, $$g^Ty$$ (directional derivative).
+
 $$\nabla f(x) = g$$ is called the gradient of $$f$$ if the above holds.
 
-$$\nabla f(x) = \begin{matrix}
+$$\nabla f(x) = \begin{bmatrix}
                     \frac{\partial f}{\partial x_1} \\
                     \frac{\partial f}{\partial x_2} \\
                     \vdots \\
                     \frac{\partial f}{\partial x_n}
-                \end{matrix}$$
+                \end{bmatrix}$$
 
 ### Multivariate, Vector output
 
@@ -50,3 +52,11 @@ $$J_{ij}(x)=\frac{\partial f_i}{\partial x_j}$$ -->
 Let $$x=x(t)$$, then we have $$h(t)=f(x(t))$$. Then the gradient of $$f$$ with respect to $$t$$ is
 
 $$\nabla h(t)=\sum^n_{i=1}\frac{\partial f}{\partial x_i}\nabla x_i(t)=\nabla x(t) \nabla f(x(t))$$
+
+recall in the univariate case we had
+
+$$\frac{\partial\phi(\alpha(\beta))}{\partial(\beta)}=\frac{\partial\phi}{\partial\alpha}\frac{\partial\alpha}{\partial\beta}=\alpha'(\beta)\phi'(\alpha)$$
+
+Make the connection.
+
+### Forward Mode
