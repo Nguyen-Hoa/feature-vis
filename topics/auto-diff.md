@@ -4,13 +4,13 @@
 
 ### Univariate, Scalar output
 
-Let $$\phi : \mathbb{R} \rarr \mathbb{R}$$ be a real valued function of one variable with the first derivative defined by
+Let $$\phi : \mathbb{R} \rightarrow \mathbb{R}$$ be a real valued function of one variable with the first derivative defined by
 
-$$\phi'(\alpha)=\frac{\partial{\phi}}{\partial{\alpha}}=\lim_{\epsilon \rarr 0} \frac{\phi(\alpha+\epsilon)-\phi(\alpha)}{\epsilon}$$
+$$\phi'(\alpha)=\frac{\partial{\phi}}{\partial{\alpha}}=\lim_{\epsilon \rightarrow 0} \frac{\phi(\alpha+\epsilon)-\phi(\alpha)}{\epsilon}$$
 
 and the second derivative (by applying the derviative to $$\phi'(\alpha)$$)
 
-$$\phi''(\alpha)=\frac{\partial^2{\phi}}{\partial{\alpha}^2}=\lim_{\epsilon \rarr 0} \frac{\phi'(\alpha+\epsilon)-\phi'(\alpha)}{\epsilon}$$
+$$\phi''(\alpha)=\frac{\partial^2{\phi}}{\partial{\alpha}^2}=\lim_{\epsilon \rightarrow 0} \frac{\phi'(\alpha+\epsilon)-\phi'(\alpha)}{\epsilon}$$
 
 To illustrate the chain rule, suppose $$\alpha$$ depends on a value $$\beta$$. So we have
 
@@ -22,11 +22,11 @@ $$\frac{\partial\phi(\alpha(\beta))}{\partial(\beta)}=\frac{\partial\phi}{\parti
 
 ### Multivariate, Scalar output
 
-Let $$f:\mathbb{R}^n\rarr\mathbb{R}$$ be a real valued function of $$n$$ independent variables, $$x=(x_1,x_2,\ldots,x_n)^{T}$$
+Let $$f:\mathbb{R}^n\rightarrow\mathbb{R}$$ be a real valued function of $$n$$ independent variables, $$x=(x_1,x_2,\ldots,x_n)^{T}$$
 
 $$f$$ is differentiable at $$x$$ if there exists a vector $$g\in\mathbb{R}^n$$ such that
 
-$$\lim_{y \rarr 0}\frac{f(x+y)-f(x)-g^{T}y}{||y||}=0$$
+$$\lim_{y \rightarrow 0}\frac{f(x+y)-f(x)-g^{T}y}{||y||}=0$$
 
 $$\nabla f(x) = g$$ is called the gradient of $$f$$ if the above holds.
 
@@ -39,9 +39,9 @@ $$\nabla f(x) = \begin{matrix}
 
 ### Multivariate, Vector output
 
-Suppose now we have a *vector valued* function $$f:\mathbb{R}^n \rarr \mathbb{R}^m$$ with $$n$$ independent variables. Then
+Suppose now we have a *vector valued* function $$f:\mathbb{R}^n \rightarrow \mathbb{R}^m$$ with $$n$$ independent variables. Then
 
-$$\nabla f(x) \in \mathbb{R}^n \rarr \mathbb{R}^m \quad s.t. \quad \nabla f_i(x) = \frac{\partial f_i}{\partial x}$$
+$$\nabla f(x) \in \mathbb{R}^n \rightarrow \mathbb{R}^m \quad s.t. \quad \nabla f_i(x) = \frac{\partial f_i}{\partial x}$$
 
 <!-- The Jacobian is a matrix of partial derviatives, with each element defined by
 
