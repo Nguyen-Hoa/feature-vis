@@ -63,7 +63,7 @@ The following are maximized images from random noise for *fc8-951*, which activa
 ![27318128](../assets/activation_maximization/post_951[lemons]_27318128.png)
 *fc8-951* activation value: 27318128
 
-Still very noisy, but we can start to find round patterns and textures that resemble lemons (a bit of a stretch). Notice that for each subsequent image, the activation is increased by a factor of 10, yet remain similarly as noisy. This is not addressed in too much detail in the literature, besides the a result of overactivation. Although the activation continues to increase linearly (a result of gradient descent), the interpretability seems to converge. 
+Still very noisy, but we can start to find round patterns and textures that resemble lemons (a bit of a stretch). Notice that for each subsequent image, the activation is increased by a factor of 10, yet remain similarly as noisy. This is not addressed in too much detail in the literature, besides the a result of overactivation. Although the activation continues to increase linearly (a result of gradient descent), the interpretability seems to diverge after a threshold. 
 
 These exciting results lay the foundation for what activation maximization and feature visualization is capable of; continued in the next section.
 
