@@ -32,7 +32,7 @@ $$\phi(h_i(x)) \doteq x^* = x_k + \alpha\nabla_x h$$
 
 Further work has been done to explore additional terms like regularizers that produce more interpretable images, the use of generator networks instead of directly working on images, and starting with real image priors. In the rest of this discussion, we will implement the basic activation maximization function above in the machine learning framework PyTorch, and show results on an Alexnet image classification model pre-trained on Imagenet. This discussion will continue in a later work where we will explore the methods that improve interpretability.
 
-## PyTorch Experiment
+#### PyTorch Experiment: Gradient Ascent
 
 Activation value of unit 340 in layer 'classification_6' will be denoted *fc8-340*. The activation values are before normalization (converted such that the activation of all units add up to 1).
 
@@ -50,6 +50,25 @@ Image initialized with random values to be maximized for *fc8-340*.
 
 ![Random Max](../assets/activation_maximization/post-max_screenshot_14.07.2020.png)
 
-Result of maximized image for *fc8-340*, with activation value over 200,000.
+Result of maximized image for *fc8-340*, with activation value over 200,000. Although this image is yields a high activation value, it is just random noise to humans. This is an example of over activation.
 
-The experiments above do not show the potential of this method because it lacks important regularizing features listed in the previous section. Therefore the uninterpretability of the following results are high, and do not aid in the understanding of the network. 
+The following are maximized images from random noise for *fc8-951*, which activates for the lemon classifcation in Alexnet trained on Imagenet.
+
+![82202](../assets/activation_maximization/post_951[lemons]_82202.png)
+*fc8-951* activation value: 82202
+
+![204014](../assets/activation_maximization/post_951[lemons]_204014.png)
+*fc8-951* activation value: 204014
+
+![27318128](../assets/activation_maximization/post_951[lemons]_27318128.png)
+*fc8-951* activation value: 27318128
+
+Still very noisy, but we can start to find round patterns and textures that resemble lemons (a bit of a stretch). Notice that for each subsequent image, the activation is increased by a factor of 10, yet remain similarly as noisy. This is not addressed in too much detail in the literature, besides the a result of overactivation. Although the activation continues to increase linearly (a result of gradient descent), the interpretability seems to converge. 
+
+These exciting results lay the foundation for what activation maximization and feature visualization is capable of; continued in the next section.
+
+The experiments above do not show the potential of this method because it lacks important regularizing features listed in the previous section. Therefore the uninterpretability of the following results are high, and do not significantly aid in the understanding of the network. We continue this experiment by exploring the use of natural image priors, generator networks, and regularizers as shown by [Mahendran et al](https://arxiv.org/abs/1412.0035).
+
+### Generator Networks
+
+*running experiments, check back later!*
