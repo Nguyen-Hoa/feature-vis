@@ -34,11 +34,11 @@ Further work has been done to explore additional terms like regularizers that pr
 
 ## PyTorch Experiment
 
-Activation value of unit 340 in layer 'classification_6' will be denoted *fc8-340*.
+Activation value of unit 340 in layer 'classification_6' will be denoted *fc8-340*. The activation values are before normalization (converted such that the activation of all units add up to 1).
 
 ![Zebra Test](../assets/activation_maximization/pre-max_screenshot_16.07.2020.png)
 
-Zebra test input on Alexnet trained on Imagenet (1000 classes). Activation of *fc8-340*: 23.1242 (before normalization)
+Zebra test input on Alexnet trained on Imagenet (1000 classes). Activation of *fc8-340*: 23.1242
 
 ![Zebra Max](../assets/activation_maximization/post-max_screenshot_16.07.2020.png)
 
@@ -52,4 +52,4 @@ Image initialized with random values to be maximized for *fc8-340*.
 
 Result of maximized image for *fc8-340*, with activation value over 200,000.
 
-The experiments above do not show the potential of this method because it lacks important regularizing features listed in the previous section. Therefore the interpretability of the following results are high, and do not aid in the understanding of the network. 
+The experiments above do not show the potential of this method because it lacks important regularizing features listed in the previous section. Therefore the uninterpretability of the following results are high, and do not aid in the understanding of the network. 
