@@ -34,4 +34,22 @@ Further work has been done to explore additional terms like regularizers that pr
 
 ## PyTorch Experiment
 
-[Zebra Test](/assets/activation_maximization/Common_zebra_1.jpg)
+Activation value of unit 340 in layer 'classification_6' will be denoted *fc8-340*.
+
+![Zebra Test](/assets/activation_maximization/pre-max_screenshot_16.07.2020.png)
+
+Zebra test input on Alexnet trained on Imagenet (1000 classes). Activation of *fc8-340*: 23.1242 (before normalization)
+
+![Zebra Max](/assets/activation_maximization/post-max_screenshot_16.07.2020.png)
+
+Zebra with activation maximization applied (500 steps, alpha = 1), final activation of *fc8-340*: 1186.5620.
+
+![Random Init](../assets/activation_maximization/pre-max_screenshot_14.07.2020.png)
+
+Image initialized with random values to be maximized for *fc8-340*.
+
+![Random Max](../assets/activation_maximization/post-max_screenshot_14.07.2020.png)
+
+Result of maximized image for *fc8-340*, with activation value over 200,000.
+
+The experiments above do not show the potential of this method because it lacks important regularizing features listed in the previous section. Therefore the interpretability of the following results are high, and do not aid in the understanding of the network. 
