@@ -36,11 +36,11 @@ Further work has been done to explore additional terms like regularizers that pr
 
 Activation value of unit 340 in layer 'classification_6' will be denoted *fc8-340*.
 
-![Zebra Test](/assets/activation_maximization/pre-max_screenshot_16.07.2020.png)
+![Zebra Test](../assets/activation_maximization/pre-max_screenshot_16.07.2020.png)
 
 Zebra test input on Alexnet trained on Imagenet (1000 classes). Activation of *fc8-340*: 23.1242 (before normalization)
 
-![Zebra Max](/assets/activation_maximization/post-max_screenshot_16.07.2020.png)
+![Zebra Max](../assets/activation_maximization/post-max_screenshot_16.07.2020.png)
 
 Zebra with activation maximization applied (500 steps, alpha = 1), final activation of *fc8-340*: 1186.5620.
 
