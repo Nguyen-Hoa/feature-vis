@@ -1,5 +1,32 @@
 # Activation Maximization
 
+## Table of Contents
+
+---
+
+1. [Preface](##Preface)
+   1. [Purpose](###Purpose)
+   2. [Background](###Background)
+2. [Introduction](##Introduction)
+
+---
+
+## Preface
+
+### Purpose
+
+Trying to understand artificial neural networks has been a challenging task, especially for someone with a rocky math background like myself. I have read countless articles and tutorials on explaining the different topics involved in constructing a neural network, some have been helpful, some not so much. The effectiveness of these articles I have come to realize are determined by how much I am willing to pay attention and actively read, instead of going through them in one swoop and finishing with an almost identical example of code that I won't understand in a week. The purpose of these write-ups are to solidify my own understanding of a subject while being as open as possible about how I acquired the understanding. To the readers who are more knowledgeable than me on the subject, I hope the organization of this write-up can still serve as a reference to topics relating to the subject. To the readers just beginning to learn this subject, I most want to share my 'aha' moments and spark an 'aha' moment of your own. To the readers somewhere in between, I hope there is enough content here to at least point you in a direction with an answer.
+
+### Background
+
+This write-up will be focusing on activation maximization, which is an optimization technique applied to the visualization of features that activate a neuron in an aritificial neural network. Since the purpose of activation maximization is to help us appreciate what happens after a network has 'learned' something, a high level understanding of artificial neural networks and their training proccess will be enough for this write-up. Although [Tensorflow]() and [PyTorch]() provide resources for understanding the training process, they will focus more on programming. For a quick introduction, I recommend [~15 minute resource](), which should suffice for this write-up. In addition, the reader will benefit and appreciate activation maximization more by understanding how gradient descent works, and the elegance of that optimization method. I will briefly explain gradient descent in this write-up, but for a thorough explanation, [Numerical Optimizations]() is where I learned about optimization techniques, but it is not the only one.
+
+## Introduction
+<!-- Repetitive topic sentence -->
+In this write-up I will focus on sequential convolutional neural networks (CNN) for image classification to explain activation maximization (AM). CNN examples are commonly used in the literature and I think best illustrates what is happening, however AM can be applied to a wide variety of neural networks and data.
+
+When performing image classification, the CNN receives an image as input that then gets sequentially processed by the layers of the network until it reaches the final layer which outputs a class prediction. Say we have an image, $x \in \mathbb{R}^{C X H X W}$, where $C$ is the 
+
 ## Neural Network Structure
 
 In the image classification task with neural networks, an image is fed to a network that produces a prediction of what class that image belongs to. The process of feeding an image through a network can be represented by nested functions, or more visually, layers of an onion. The outermost function or onion layer is the final result of the network, and deep inside the onion, the innermost function (the first layer) is where we input our image. Let $$h(x)$$ represent our neural network, composed of $$n$$ layers each represented by $$f_i()$$. 
