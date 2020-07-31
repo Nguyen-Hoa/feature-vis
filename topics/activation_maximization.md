@@ -1,4 +1,4 @@
-# Activation Maximization
+# Activation Maximization (DRAFT)
 
 ## Table of Contents
 
@@ -19,13 +19,23 @@ Trying to understand artificial neural networks has been a challenging task, esp
 
 ### Background
 
-This write-up will be focusing on activation maximization, which is an optimization technique applied to the visualization of features that activate a neuron in an aritificial neural network. Since the purpose of activation maximization is to help us appreciate what happens after a network has 'learned' something, a high level understanding of artificial neural networks and their training proccess will be enough for this write-up. Although [Tensorflow]() and [PyTorch]() provide resources for understanding the training process, they will focus more on programming. For a quick introduction, I recommend [~15 minute resource](), which should suffice for this write-up. In addition, the reader will benefit and appreciate activation maximization more by understanding how gradient descent works, and the elegance of that optimization method. I will briefly explain gradient descent in this write-up, but for a thorough explanation, [Numerical Optimizations]() is where I learned about optimization techniques, but it is not the only one.
+This write-up will be focusing on activation maximization, which is an optimization technique applied to the visualization of features that activate a neuron in an aritificial neural network. Since the purpose of activation maximization is to help us appreciate what happens after a network has 'learned' something, a high level understanding of artificial neural networks and their training proccess will be enough for this write-up. Although [Tensorflow]() and [PyTorch]() provide resources for understanding the training process, they focus more on programming. For a quick introduction, I recommend [~15 minute resource](), which should suffice for this write-up. In addition, the reader will benefit and appreciate activation maximization more by understanding how gradient descent works, and the elegance of that optimization method. I will briefly explain gradient descent in this write-up, but for a thorough explanation, [Numerical Optimizations]() is where I learned about optimization techniques, but it is not the only one.
 
 ## Introduction
 <!-- Repetitive topic sentence -->
-In this write-up I will focus on sequential convolutional neural networks (CNN) for image classification to explain activation maximization (AM). CNN examples are commonly used in the literature and I think best illustrates what is happening, however AM can be applied to a wide variety of neural networks and data.
+Activation Maxmization (AM) is a way to visualize the features learned by a neural network, and can be applied to different types of neural networks and a variety of data types (e.g. sound, video, etc.). A neural network is composed up of multiple layers, which in turn are composed of many units of computation, which I will refer to as neurons. The output of a neuron is an activation value based on what it receives as input. After a network is trained, the neurons will activate according to different features in an image, which can be as simple as curves or lines for a handwritten digit, or as complex as the shapes that make up an object. In a network, neurons in the early layers act as filters for simple features which connect to neurons further down the network to recognize complex objects [Head of Tesla RD guy's paper](). AM is used to find an input that activates certain neurons, and in the case of images, visualize what features that neuron responds highly to.
 
-When performing image classification, the CNN receives an image as input that then gets sequentially processed by the layers of the network until it reaches the final layer which outputs a class prediction. Say we have an image, $x \in \mathbb{R}^{C X H X W}$, where $C$ is the 
+In a deep neural network, that is one with many layers and up to millions of neurons, it can be hard to understand what features contribute to the network's prediction. Assuming a networks correctly predicts the class of an input, one can present it with an input and look at the neurons that have high activation values. For the final prediction layer of a network, this is simple, the neuron with the highest activation corresponds with the correct classification. More interestingly, looking at the activations of neurons in previous layers show which neurons contributed to that prediction. Tangentially, it has been shown in [paper]() that neurons in the same layer with *low* activations also contribute to the correct classification. However, understanding what features in an image contribute to the correct classification can be useful for building a more robust network or dataset, and increasing confidence in what a network is learning.
+
+In this write-up I will focus on sequential convolutional neural networks (CNN) for image classification to explain activation maximization (AM). CNN examples are commonly used in the literature and I think best illustrates what is happening. 
+
+When performing image classification, the CNN receives an image as input that then gets sequentially processed by the layers of the network until it reaches the final layer which outputs a class prediction. Let $$h(x): \mathbb{R}^{input} \rightarrow \mathbb{R}^{output}$$ represent some CNN, where the $$input$$ dimmension can be in image space (e.g. channels by height by width), and the $$output$$ dimmension is some one dimmensional vector of probabilities for each class (e.g. 1 x number of classes).
+
+<!-- Say we want have an input, $$x \in \mathbb{R}^{input}$$, where $$input$$ can be the dimmensions of a single image (e.g. channel by height by width), and a desired output $$y \in \mathbb{R}^{output}$$, where $$output$$ can be an $$n$$ by $$1$$ vector of class probabilities. 
+
+If we reverse the mapping of the CNN, defined by $$g(\cdot): \mathbb{R}^{n} \rightarrow \mathbb{R}^{C X H X W}$$, we can turn a prediction into a image.
+
+The $$h(x)$$ can be thought of as asking a CNN what class it thinks an image belongs in, and the inverse, $$g(\cdot)$$ would be like asking what it thinks a class looks like.  -->
 
 ## Neural Network Structure
 
@@ -99,3 +109,5 @@ The experiments above do not show the potential of this method because it lacks 
 ### Generator Networks
 
 *running experiments, check back later!*
+
+Hoa Nguyen
