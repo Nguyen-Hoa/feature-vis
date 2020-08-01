@@ -1,4 +1,4 @@
-# Feature Visualization
+# Feature Visualization (DRAFT)
 
 Ongoing organization of ideas towards understanding neural networks through feature visualization. Best viewed on [Github Pages](https://nguyen-hoa.github.io/feature-vis/).
 
