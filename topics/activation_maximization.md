@@ -69,6 +69,16 @@ $$\phi(h_i(x)) \doteq x^* = x_k + \alpha\nabla_x h$$
 
 Further work has been done to explore additional terms like regularizers that produce more interpretable images, the use of generator networks instead of directly working on images, and starting with real image priors. In the rest of this discussion, we will implement the basic activation maximization function above in the machine learning framework PyTorch, and show results on an Alexnet image classification model pre-trained on Imagenet. This discussion will continue in a later work where we will explore the methods that improve interpretability.
 
+![ambulance](./../assets/activation_maximization/vehicles/ambulance_1000.jpg)
+
+![bicycle](./../assets/activation_maximization/vehicles/bicycle_1000.jpg)
+
+![car](./../assets/activation_maximization/vehicles/car_1000.jpg)
+
+![caterpillar](./../assets/activation_maximization/vehicles/caterpillar_1000.jpg)
+
+![helicopter](./../assets/activation_maximization/vehicles/helicopter_1000.jpg)
+
 ### Generator Networks
 
 *running experiments, check back later!*
