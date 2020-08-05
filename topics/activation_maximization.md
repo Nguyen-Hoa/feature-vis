@@ -19,11 +19,11 @@ Trying to understand artificial neural networks has been a challenging task, esp
 
 ### Background
 
-This write-up will be focusing on activation maximization, which is an optimization technique applied to the visualization of features that activate a neuron in an aritificial neural network. Since the purpose of activation maximization is to help us appreciate what happens after a network has 'learned' something, a high level understanding of artificial neural networks and their training proccess will be enough for this write-up. Although [Tensorflow]() and [PyTorch]() provide resources for understanding the training process, they focus more on programming. For a quick introduction, I recommend [~15 minute resource](), which should suffice for this write-up. In addition, the reader will benefit and appreciate activation maximization more by understanding how gradient descent works, and the elegance of that optimization method. I will briefly explain gradient descent in this write-up, but for a thorough explanation, [Numerical Optimizations]() is where I learned about optimization techniques, but it is not the only one.
+This write-up will be focusing on activation maximization, which is an optimization technique applied to the visualization of features that activate a neuron in an aritificial neural network. Since the purpose of activation maximization is to help us appreciate what happens after a network has 'learned' something, a high level understanding of artificial neural networks and their training proccess will be enough for this write-up. Although [Tensorflow]() and [PyTorch]() provide resources for understanding the training process, they focus more on programming. For a quick introduction, I recommend [~15 minute resource](), which should suffice for this write-up. In addition, the reader will benefit and appreciate activation maximization more by understanding how gradient descent works, and the elegance of that optimization method. I will briefly explain gradient descent in this write-up, but for a thorough explanation, [Numerical Optimizations]() is where I learned about line search methods, but it is not the only one.
 
 ## Introduction
 <!-- Repetitive topic sentence -->
-Activation Maxmization (AM) is a way to visualize the features learned by a neural network, and can be applied to different types of neural networks and a variety of data types (e.g. sound, video, etc.). A neural network is composed up of multiple layers, which in turn are composed of many units of computation, which I will refer to as neurons. The output of a neuron is an activation value based on what it receives as input. After a network is trained, the neurons will activate according to different features in an image, which can be as simple as curves or lines for a handwritten digit, or as complex as the shapes that make up an object. In a network, neurons in the early layers act as filters for simple features which connect to neurons further down the network to recognize complex objects [Head of Tesla RD guy's paper](). AM is used to find an input that activates certain neurons, and in the case of images, visualize what features that neuron responds highly to.
+Activation Maxmization (AM) is a way to visualize the features learned by a neural network, and can be applied to different types of neural networks and a variety of data types (e.g. sound, video, etc.). A neural network is composed up of multiple layers, which in turn are composed of many units of computation, which I will refer to as neurons. The output of a neuron is an activation value based on what it receives as input. After a network is trained, the neurons will activate according to different features in an image, which can be as simple as curves or lines for a handwritten digit, or as complex as the features of a face. In a network, neurons in the early layers act as filters for simple features which connect to neurons further down the network to recognize complex objects [Head of Tesla RD guy's paper](). AM is used to find an input that activates any neurons, and in the case of images, visualize what features that neuron responds highly to.
 
 In a deep neural network, that is one with many layers and up to millions of neurons, it can be hard to understand what features contribute to the network's prediction. Assuming a networks correctly predicts the class of an input, one can present it with an input and look at the neurons that have high activation values. For the final prediction layer of a network, this is simple, the neuron with the highest activation corresponds with the correct classification. More interestingly, looking at the activations of neurons in previous layers show which neurons contributed to that prediction. Tangentially, it has been shown in [paper]() that neurons in the same layer with *low* activations also contribute to the correct classification. However, understanding what features in an image contribute to the correct classification can be useful for building a more robust network or dataset, and increasing confidence in what a network is learning.
 
@@ -68,43 +68,6 @@ The activation maximization objective function is defined in [Erhan et al.](../l
 $$\phi(h_i(x)) \doteq x^* = x_k + \alpha\nabla_x h$$
 
 Further work has been done to explore additional terms like regularizers that produce more interpretable images, the use of generator networks instead of directly working on images, and starting with real image priors. In the rest of this discussion, we will implement the basic activation maximization function above in the machine learning framework PyTorch, and show results on an Alexnet image classification model pre-trained on Imagenet. This discussion will continue in a later work where we will explore the methods that improve interpretability.
-
-#### PyTorch Experiment: Gradient Ascent
-
-Activation value of unit 340 in layer 'classification_6' will be denoted *fc8-340*. The activation values are before normalization (converted such that the activation of all units add up to 1).
-
-![Zebra Test](../assets/activation_maximization/pre-max_screenshot_16.07.2020.png)
-
-Zebra test input on Alexnet trained on Imagenet (1000 classes). Activation of *fc8-340*: 23.1242
-
-![Zebra Max](../assets/activation_maximization/post-max_screenshot_16.07.2020.png)
-
-Zebra with activation maximization applied (500 steps, alpha = 1), final activation of *fc8-340*: 1186.5620.
-
-![Random Init](../assets/activation_maximization/pre-max_screenshot_14.07.2020.png)
-
-Image initialized with random values to be maximized for *fc8-340*.
-
-![Random Max](../assets/activation_maximization/post-max_screenshot_14.07.2020.png)
-
-Result of maximized image for *fc8-340*, with activation value over 200,000. Although this image is yields a high activation value, it is just random noise to humans. This is an example of over activation.
-
-The following are maximized images from random noise for *fc8-951*, which activates for the lemon classifcation in Alexnet trained on Imagenet.
-
-![82202](../assets/activation_maximization/post_951[lemons]_82202.png)
-*fc8-951* activation value: 82202
-
-![204014](../assets/activation_maximization/post_951[lemons]_204014.png)
-*fc8-951* activation value: 204014
-
-![27318128](../assets/activation_maximization/post_951[lemons]_27318128.png)
-*fc8-951* activation value: 27318128
-
-Still very noisy, but we can start to find round patterns and textures that resemble lemons (a bit of a stretch). Notice that for each subsequent image, the activation is increased by a factor of 10, yet remain similarly as noisy. This is not addressed in too much detail in the literature, besides the a result of overactivation. Although the activation continues to increase linearly (a result of gradient descent), the interpretability seems to diverge after a threshold. 
-
-These exciting results lay the foundation for what activation maximization and feature visualization is capable of; continued in the next section.
-
-The experiments above do not show the potential of this method because it lacks important regularizing features listed in the previous section. Therefore the uninterpretability of the following results are high, and do not significantly aid in the understanding of the network. We continue this experiment by exploring the use of natural image priors, generator networks, and regularizers as shown by [Mahendran et al](https://arxiv.org/abs/1412.0035).
 
 ### Generator Networks
 
