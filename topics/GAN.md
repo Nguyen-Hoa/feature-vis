@@ -1,6 +1,6 @@
 # NIPS 2016 Tutorial: Generative Adversarial Networks (GAN)
 
-## How Do Generative Models Work?
+## How Do Generative Models Work
 
 ### Density Estimation
 
